@@ -15,6 +15,6 @@ export function Room({ children }: { children: ReactNode }) {
           {children}
         </ClientSideSuspense>
       </RoomProvider>
-    // </LiveblocksProvider>
+  </LiveblocksProvider>
   );
 }
