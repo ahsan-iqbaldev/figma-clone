@@ -1,7 +1,7 @@
 import { CursorChatProps, CursorMode } from "@/types/type";
 import CursorSVG from "@/public/assets/CursorSVG";
 
-const CursorChat = ({ cursor, cursorState, setCursorState, updateMyPresence }: CursorChatProps) => {
+const CursorChat = ({ cursor, cursorState, setCursorState, updateMyPresence }: any) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     updateMyPresence({ message: e.target.value });
     setCursorState({
@@ -15,7 +15,6 @@ const CursorChat = ({ cursor, cursorState, setCursorState, updateMyPresence }: C
     if (e.key === "Enter") {
       setCursorState({
         mode: CursorMode.Chat,
-        // @ts-ignore
         previousMessage: cursorState.message,
         message: "",
       });
@@ -33,7 +32,6 @@ const CursorChat = ({ cursor, cursorState, setCursorState, updateMyPresence }: C
         transform: `translateX(${cursor.x}px) translateY(${cursor.y}px)`,
       }}
     >
-      {/* Show message input when cursor is in chat mode */}
       {cursorState.mode === CursorMode.Chat && (
         <>
           {/* Custom Cursor shape */}
@@ -46,12 +44,6 @@ const CursorChat = ({ cursor, cursorState, setCursorState, updateMyPresence }: C
               borderRadius: 20,
             }}
           >
-            {/**
-             * if there is a previous message, show it above the input
-             *
-             * We're doing this because when user press enter, we want to
-             * show the previous message at top and the input at bottom
-             */}
             {cursorState.previousMessage && <div>{cursorState.previousMessage}</div>}
             <input
               className="z-10 w-60 border-none	bg-transparent text-white placeholder-blue-300 outline-none"
